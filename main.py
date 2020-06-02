@@ -1,7 +1,6 @@
 import pyautogui
 from PIL import Image, ImageGrab
 import time
-#from numpy import asarray
 
 def hit(key):
     pyautogui.keyDown(key)
@@ -12,7 +11,7 @@ def isCollide(data):
     #Bird
     for i in range(750,770):
         for j in range(205,283):
-            if data[i,j] == "#9aa0a6"  :
+            if data[i,j] > 150:
                 hit("down")
                 return True
     
@@ -25,19 +24,18 @@ def isCollide(data):
     return False  
 
 if __name__ == '__main__':
-    print("Hey, Dino game is about to start in 3 seconds")
+    print("Hey, Dino game is about to start in 3 seconds: ")
     time.sleep(3)
-    hit('up')
+    hit("up")
     while True:
-        image = ImageGrab.grab().convert('L')
+        image = ImageGrab.grab()
         data = image.load()
         isCollide(data)
-    #    print(asarray(image))
         """
         #Draw the rectangle for cactus
-        #for i in range(700,730):
-        #    for j in range(283,320):
-        #        data[i,j] = 0
+        for i in range(700,730):
+            for j in range(283,320):
+                data[i,j] = 0
 
         #Draw the rectangle for bird
         for i in range(700,730):
@@ -47,5 +45,6 @@ if __name__ == '__main__':
         image.show()
         break
     """
+    
     
     
